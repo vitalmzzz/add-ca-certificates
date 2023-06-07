@@ -1,0 +1,24 @@
+---
+# tasks file for add-ca-certificates
+
+- name: "Create cert path directory"
+  become: yes
+  become_user: root
+  file:
+    path: "{{ ca_path_dir }}"
+    state: directory
+
+- name: "Сopying ca certificates"
+  become: yes
+  become_user: root
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ca_path_dir }}"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: 0644
+  loop:
+    - jira_root_ca.crt
+    - rshbdev_ca_ca.crt
+    - rshbdev_intermediate_ca.crt
+  notify: "Update CA certificate trust"

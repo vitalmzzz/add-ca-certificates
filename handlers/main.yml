@@ -1,0 +1,7 @@
+---
+# handlers file for add-ca-certificates
+
+- name: "Update CA certificate trust"
+  become: yes
+  become_user: root
+  shell: /bin/bash -c "update-ca-certificates"

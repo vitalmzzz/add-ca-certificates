@@ -1,0 +1,7 @@
+---
+# defaults file for add-ca-certificates
+
+owner: "root" 
+group: "root"
+
+ca_path_dir: "/usr/local/share/ca-certificates/extra"
